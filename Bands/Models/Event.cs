@@ -45,25 +45,35 @@ namespace Bands.Models
 
 
         /// <summary>
-        /// direct link to the ticket seller
+        /// type of tickets available (presale, tickets, etc), only set when tickets are available.
         /// </summary>
-        [JsonProperty("ticket_url")]
-        public string TicketUrl { get; set; }
-
-
+        [JsonProperty("ticket_type")]
+        public string TicketType { get; set; }
 
 
         /// <summary>
-        /// number of upcoming events
+        /// tickets available/unavailable for the event
         /// </summary>
-        [JsonProperty("upcoming_events_count")]
-        public int UpcomingEventsCount { get; set; }
+        [JsonProperty("ticket_status")]
+        public string TicketStatus { get; set; }
+
 
         /// <summary>
-        /// number of trackers
+        /// on sale datetime for event tickets expressed in ISO 8601 format with no timezone, or null if unknown
         /// </summary>
-        [JsonProperty("tracker_count")]
-        public int TrackersCount { get; set; }
+        [JsonProperty("on_sale_datetime")]
+        public string OnSaleDatetime { get; set; }
+
+
+        /// <summary>
+        /// additional details for the event
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+
+        //TODO : Add artists and venue informations
+
 
     }
 }
