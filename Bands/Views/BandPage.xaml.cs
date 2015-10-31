@@ -10,6 +10,7 @@ namespace Bands.Views
         {
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Disabled;
+            
         }
 
         // strongly-typed view models enable x:bind

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// Event JSON from Bandsintown V2 API
@@ -7,7 +8,7 @@ using System;
 namespace Bands.Models
 {
     [JsonObject]
-    public class Event
+    public class BitEvent
     {
 
         /// <summary>
@@ -72,7 +73,24 @@ namespace Bands.Models
         public string Description { get; set; }
 
 
-        //TODO : Add artists and venue informations
+        /// <summary>
+        /// array of artists performing at the event
+        /// </summary>
+        [JsonProperty("artists")]
+        public List<BitArtist> Artists
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// venue object
+        /// </summary>
+        [JsonProperty("venue")]
+        public BitVenue Venue { get; set; }
+
+
+        //TODO : Add  venue informations
 
 
     }

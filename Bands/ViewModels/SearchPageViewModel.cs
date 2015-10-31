@@ -1,13 +1,18 @@
+using Bands.Models;
+using Bands.Services.BandsintownServices;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Template10.Services.NavigationService;
+using Windows.UI.Popups;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 namespace Bands.ViewModels
 {
-    public class SearchPageViewModel : Bands.Mvvm.ViewModelBase
+    public class SearchPageViewModel : Bands.Mvvm.ViewModelBase 
     {
         public SearchPageViewModel()
         {
@@ -48,22 +53,37 @@ namespace Bands.ViewModels
         private string _Value = string.Empty;
         public string Value { get { return _Value; } set { Set(ref _Value, value); } }
 
-
-        public void SearchForBand()
+        
+        public async void SearchForBand()
         {
+            try
+            {
 
+                //Searching for a band with Bandsintown services
+                BitArtistsService search = new BitArtistsService();
+                BitArtist artist = await search.GetArtistAsync(this.Value);
 
-            this.NavigationService.Navigate(typeof(Views.BandPage), this.Value);
+                if (artist != null) {
+                    this.NavigationService.Navigate(typeof(Views.BandPage), artist);
+                }
+
+            }
+
+            catch (ArgumentException)
+            {
+                //Catching bad argument input
+                MessageDialog msgDialog = new MessageDialog("\"" +this.Value + "\" is not valid , please retry", "404 : Band not found:'(");
+                await msgDialog.ShowAsync();
+            }
+
+            catch (Exception)
+            {
+                //Catching no service or notfound band
+                MessageDialog msgDialog = new MessageDialog("No bands found for \""+ this.Value + "\" please retry... ", "404 : Band not found :'(");
+                await msgDialog.ShowAsync();
+            }
+
         }
-
-
-
-        /*
-        public void GotoDetailsPage()
-        {
-            this.NavigationService.Navigate(typeof(Views.BandPage), this.Value);
-        }
-        */
     }
 }
 

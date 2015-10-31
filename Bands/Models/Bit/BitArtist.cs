@@ -7,7 +7,7 @@ using System;
 namespace Bands.Models
 {
     [JsonObject]
-    public class Artist
+    public class BitArtist
     {
 
         /// <summary>

@@ -1,16 +1,36 @@
+using Bands.Models;
+using Bands.Services.BandsintownServices;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Template10.Mvvm;
 using Template10.Services.NavigationService;
+using Windows.UI.Popups;
 using Windows.UI.Xaml.Navigation;
 
 namespace Bands.ViewModels
 {
     public class BandPageViewModel : Bands.Mvvm.ViewModelBase
     {
+
+
+        private string _Name = "Default";
+        private BitArtist _Artist = null;
+        //private List<BitEvent> _EventList = null;
+
+        public string Name { get { return _Name; } set { Set(ref _Name, value); } }
+
+        public BitArtist artist { get { return _Artist; } set { Set(ref _Artist, value); } }
+        ObservableCollection<BitEvent> _EventList = default(ObservableCollection<BitEvent>);
+        public ObservableCollection<BitEvent> eventList { get { return _EventList; } private set { Set(ref _EventList, value); } }
+
+        //public List<BitEvent> eventList { get { return _EventList; } set { Set(ref _EventList, value); } }
+
+
         public BandPageViewModel()
         {
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
@@ -33,9 +53,34 @@ namespace Bands.ViewModels
             else
             {
                 // use navigation parameter
-                Name = parameter?.ToString();
+                //Name = parameter?.ToString();
+
+                _Artist = (BitArtist)parameter;
+                SearchBandEvents();
             }
         }
+
+
+        private async void SearchBandEvents()
+        {
+            try
+            {
+                //Searching events for the band with Bandsintown services
+                BitEventsService search = new BitEventsService();
+                _EventList = await search.GetEventsForArtistAsync(_Artist);
+                Debug.WriteLine("Event list : " + _EventList.Count);
+
+            }
+            catch (Exception)
+            {
+                //Catching bad argument input
+                MessageDialog msgDialog = new MessageDialog("\"" + _Artist.Name + "\" is not valid , please retry", "404 : Band not found:'(");
+                await msgDialog.ShowAsync();
+
+            }
+
+        }
+
 
         public override Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)
         {
@@ -52,8 +97,6 @@ namespace Bands.ViewModels
             args.Cancel = false;
         }
 
-        private string _Name = "Default";
-        public string Name { get { return _Name; } set { Set(ref _Name, value); } }
     }
 }
 

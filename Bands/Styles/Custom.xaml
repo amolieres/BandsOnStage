@@ -10,6 +10,35 @@
     <Color x:Key="ContrastColor">White</Color>
     <SolidColorBrush x:Key="ContrastColorBrush" Color="{StaticResource ContrastColor}" />
 
+
+    <!--  Define style for event item  -->
+    <DataTemplate x:Name="EventTemplate">
+        <Grid BorderBrush="Gray" BorderThickness="0,0,0,1" Padding="5,0,5,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical">
+                <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding Title}" />
+                <TextBlock Text="{Binding Description}" />
+                <TextBlock>
+                    <Run Text="On : " />
+                    <Run Text="{Binding FormattedDatetime}" />
+                </TextBlock>
+                <!--<Button Command="{Binding Main.OpenCommand, Source={StaticResource Locator}}" CommandParameter="{Binding HomeUrl}" Content="Open in browser" />-->
+            </StackPanel>
+            <!--<StackPanel Grid.Column="1" Orientation="Vertical">
+                <TextBlock Text="{Binding Language}" />
+                <TextBlock>
+                    <Run Text="Star" />
+                    <Run Text="{Binding Star}" />
+                </TextBlock>
+            </StackPanel>-->
+        </Grid>
+    </DataTemplate>
+    
+
+
     <ResourceDictionary.ThemeDictionaries>
 
         <!--  RequestedTheme=Dark  -->
@@ -110,5 +139,7 @@
 
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
+
+
 </ResourceDictionary>
 
