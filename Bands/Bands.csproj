@@ -114,11 +114,15 @@
     <Compile Include="Services\SettingsServices\SettingsService.Apply.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
     <Compile Include="ViewModels\AroundPageViewModel.cs" />
+    <Compile Include="ViewModels\EventPageViewModel.cs" />
     <Compile Include="ViewModels\PopularsPageViewModel.cs" />
     <Compile Include="ViewModels\SearchPageViewModel.cs" />
     <Compile Include="ViewModels\FavoritesPageViewModel.cs" />
     <Compile Include="ViewModels\BandPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
+    <Compile Include="Views\EventPage.xaml.cs">
+      <DependentUpon>EventPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PopularsPage.xaml.cs">
       <DependentUpon>PopularsPage.xaml</DependentUpon>
     </Compile>
@@ -171,6 +175,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\EventPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PopularsPage.xaml">
       <Generator>MSBuild:Compile</Generator>

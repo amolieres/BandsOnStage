@@ -1,5 +1,5 @@
 <Page
-    x:Class="Bands.Views.BandPage"
+    x:Class="Bands.Views.EventPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Bands.Views"
@@ -13,7 +13,7 @@
     mc:Ignorable="d" x:Name="ThisPage">
 
     <Page.DataContext>
-        <vm:BandPageViewModel />
+        <vm:EventPageViewModel />
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">

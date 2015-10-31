@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Bands.ViewModels
 {
-    public class BandPageViewModel : Bands.Mvvm.ViewModelBase
+    public class EventPageViewModel : Bands.Mvvm.ViewModelBase
     {
 
 
@@ -26,11 +26,11 @@ namespace Bands.ViewModels
 
         public BitArtist artist { get { return _Artist; } set { Set(ref _Artist, value); } }
 
-        private ObservableCollection<BitEvent> _EventList;
-        public  ObservableCollection<BitEvent> eventList { get { return _EventList; } private set { Set(ref _EventList, value); } }
+        ObservableCollection<BitEvent> _EventList = default(ObservableCollection<BitEvent>);
+        public ObservableCollection<BitEvent> eventList { get { return _EventList; } private set { Set(ref _EventList, value); } }
 
 
-        public BandPageViewModel()
+        public EventPageViewModel()
         {
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
@@ -67,16 +67,8 @@ namespace Bands.ViewModels
                 //Searching events for the band with Bandsintown services
                 BitEventsService search = new BitEventsService();
                 _EventList = new ObservableCollection<BitEvent>(await search.GetEventsForArtistAsync(_Artist));
-                this.RaisePropertyChanged("eventList");
-
-                //Best way is the folowing loop... But sadly don't work 
-                /*
-                List<BitEvent> elems = await search.GetEventsForArtistAsync(_Artist);
-                foreach (BitEvent eventTemp in elems)
-                {
-                    _EventList.Add(eventTemp);
-                }*/
-
+                Debug.WriteLine("Event list : " + _EventList.Count);
+                //this.RaisePropertyChanged("eventList");
 
             }
             catch (Exception)

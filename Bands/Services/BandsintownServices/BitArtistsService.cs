@@ -30,7 +30,8 @@ namespace Bands.Services.BandsintownServices
                 throw new ArgumentException("BandsInTown query could not be empty.", nameof(query));
             }
 
-            string queryEncoded = WebUtility.UrlEncode(query);
+            //string queryEncoded = WebUtility.UrlEncode(query);
+            string queryEncoded = query.Trim();
             string url = string.Format("http://api.bandsintown.com/artists/{0}.json?api_version={1}&app_id={2}", queryEncoded, BIT_API_VERSION, APP_ID);
 
             Debug.WriteLine("BandsintownArtistSearch>Request : " + url);

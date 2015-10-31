@@ -13,17 +13,19 @@
 
     <!--  Define style for event item  -->
     <DataTemplate x:Name="EventTemplate">
-        <Grid BorderBrush="Gray" BorderThickness="0,0,0,1" Padding="5,0,5,20">
+        <Grid BorderBrush="Gray" BorderThickness="0,0,0,1" Padding="0,10,0,20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Vertical">
-                <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding Title}" />
-                <TextBlock Text="{Binding Description}" />
+                <TextBlock FontWeight="Bold" Text="{Binding Title}" />
+                <!--<TextBlock Text="{Binding Description}" />-->
                 <TextBlock>
-                    <Run Text="On : " />
+                    <Run Text="At : " />
                     <Run Text="{Binding FormattedDatetime}" />
+                    <Run Text=" In : " />
+                    <Run Text="{Binding Venue.City}" />
                 </TextBlock>
                 <!--<Button Command="{Binding Main.OpenCommand, Source={StaticResource Locator}}" CommandParameter="{Binding HomeUrl}" Content="Open in browser" />-->
             </StackPanel>

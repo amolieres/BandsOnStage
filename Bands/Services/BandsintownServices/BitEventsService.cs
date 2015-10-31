@@ -21,7 +21,7 @@ namespace Bands.Services.BandsintownServices
         private static string BIT_API_VERSION = "2.0";
 
 
-        public async Task<ObservableCollection<BitEvent>> GetEventsForArtistAsync(BitArtist query)
+        public async Task<List<BitEvent>> GetEventsForArtistAsync(BitArtist query)
         {
             if (query == null)
             {
@@ -33,7 +33,8 @@ namespace Bands.Services.BandsintownServices
                 throw new ArgumentException("BandsInTown band name query could not be empty.", nameof(query));
             }
 
-            string queryEncoded = WebUtility.UrlEncode(query.Name);
+            //string queryEncoded = WebUtility.UrlEncode(query.Name);
+            string queryEncoded = query.Name.Trim();
             string url = string.Format("http://api.bandsintown.com/artists/{0}/events.json?api_version={1}&app_id={2}",queryEncoded, BIT_API_VERSION, APP_ID);
 
             Debug.WriteLine("GetEventsForArtistAsync>Request : " + url);
@@ -49,7 +50,7 @@ namespace Bands.Services.BandsintownServices
 
 
             //TODO : Decompose
-            return new ObservableCollection<BitEvent>(JsonConvert.DeserializeObject<List<BitEvent>>(webresponse, new JsonSerializerSettings{Error = HandleDeserializationError}));
+            return JsonConvert.DeserializeObject<List<BitEvent>>(webresponse, new JsonSerializerSettings{Error = HandleDeserializationError});
 
         }
 
