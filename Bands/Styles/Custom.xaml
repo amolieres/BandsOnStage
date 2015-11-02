@@ -4,7 +4,7 @@
     <x:Double x:Key="NormalMinWidth">521</x:Double>
     <x:Double x:Key="WideMinWidth">1200</x:Double>
 
-    <Color x:Key="CustomColor">SteelBlue</Color>
+    <Color x:Key="CustomColor">DarkRed</Color>
     <SolidColorBrush x:Key="CustomColorBrush" Color="{StaticResource CustomColor}" />
 
     <Color x:Key="ContrastColor">White</Color>
@@ -12,21 +12,42 @@
 
 
     <!--  Define style for event item  -->
-    <DataTemplate x:Name="EventTemplate">
-        <Grid BorderBrush="Gray" BorderThickness="0,0,0,1" Padding="0,10,0,20">
+    <DataTemplate x:Name="ArtistEventTemplate" >
+        <Grid BorderBrush="Gray" BorderThickness="0,0,0,1" Padding="0,10,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Vertical">
-                <TextBlock FontWeight="Bold" Text="{Binding Title}" />
-                <!--<TextBlock Text="{Binding Description}" />-->
+                <TextBlock  Text="{Binding Title}" Style="{ThemeResource TitleTextBlockStyle}" />
+                <!--<TextBlock Text="{Binding Description}" />
                 <TextBlock>
                     <Run Text="At : " />
                     <Run Text="{Binding FormattedDatetime}" />
                     <Run Text=" In : " />
                     <Run Text="{Binding Venue.City}" />
-                </TextBlock>
+                </TextBlock>-->
+                <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                    <SymbolIcon Width="24" Height="24" Symbol="Clock" />
+                    <TextBlock Margin="12,0,0,0" Text="{Binding FormattedDatetime}"  
+                               Style="{ThemeResource BodyTextBlockStyle}"
+                               FontSize="14"
+                               Foreground="Gray" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                    <SymbolIcon Width="24" Height="24" Symbol="Street" />
+                    <TextBlock Margin="12,0,0,0"
+                               Style="{ThemeResource BodyTextBlockStyle}"
+                               FontSize="14"
+                               Foreground="Gray">
+                        <Run Text="{Binding Venue.Name}"/>
+                        <Run Text=" in "/>
+                        <Run Text="{Binding Venue.City}"/>
+                        <Run Text=", " />
+                        <Run Text="{Binding Venue.Country}"/>
+                    </TextBlock>
+                </StackPanel>
                 <!--<Button Command="{Binding Main.OpenCommand, Source={StaticResource Locator}}" CommandParameter="{Binding HomeUrl}" Content="Open in browser" />-->
             </StackPanel>
             <!--<StackPanel Grid.Column="1" Orientation="Vertical">
@@ -38,7 +59,56 @@
             </StackPanel>-->
         </Grid>
     </DataTemplate>
-    
+
+
+    <!--  Define style for event item without  -->
+    <DataTemplate x:Name="EventTemplate">
+        <Grid BorderBrush="Gray" BorderThickness="0,0,0,1" Padding="0,10,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical">
+
+                <TextBlock  Text="Jean louis" Style="{ThemeResource TitleTextBlockStyle}" />
+
+                <!--<TextBlock>
+                                <TextBlock  Text="{Binding getFirstArtistName}" Style="{ThemeResource TitleTextBlockStyle}" />
+                    <Run Text="At : " />
+                    <Run Text="{Binding datetime}" />
+                    <Run Text=" In : " />
+                    <Run Text="{Binding Venue.Name}" />
+
+                </TextBlock>-->
+
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Width="24" Height="24" Symbol="Clock" />
+                    <TextBlock Margin="12,0,0,0" Text="{Binding datetime}"  
+                               Style="{ThemeResource BodyTextBlockStyle}"
+                               FontSize="12"
+                               Foreground="Gray" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Width="24" Height="24" Symbol="Street" />
+                    <TextBlock Margin="12,0,0,0" Text="{Binding Venue.Name}"  
+                               Style="{ThemeResource BodyTextBlockStyle}"
+                               FontSize="12"
+                               Foreground="Gray" />
+                </StackPanel>
+
+                <!--<Button Command="{Binding Main.OpenCommand, Source={StaticResource Locator}}" CommandParameter="{Binding HomeUrl}" Content="Open in browser" />-->
+            </StackPanel>
+            <!--<StackPanel Grid.Column="1" Orientation="Vertical">
+                <TextBlock Text="{Binding Language}" />
+                <TextBlock>
+                    <Run Text="Star" />
+                    <Run Text="{Binding Star}" />
+                </TextBlock>
+            </StackPanel>-->
+        </Grid>
+    </DataTemplate>
+
 
 
     <ResourceDictionary.ThemeDictionaries>

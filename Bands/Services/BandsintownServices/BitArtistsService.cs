@@ -14,7 +14,6 @@ namespace Bands.Services.BandsintownServices
     public class BitArtistsService
     {
         private static string APP_ID = "BANDS_UNIVERSALLWINDOWS10";
-        private static string BIT_API_CONTEXT = "http://api.bandsintown.com/";
         private static string BIT_API_VERSION = "2.0";
 
 

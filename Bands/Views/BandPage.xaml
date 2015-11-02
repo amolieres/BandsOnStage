@@ -26,13 +26,20 @@
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger x:Name="VisualStateNarrowTrigger" MinWindowWidth="{StaticResource NarrowMinWidth}" />
                     </VisualState.StateTriggers>
-                    <VisualState.Setters />
+                    <VisualState.Setters>
+                        <Setter Target="ArtistImg.Height" Value="150"/>
+                        <Setter Target="ArtistImg.Width" Value="150"/>
+                    </VisualState.Setters>
+                    
                 </VisualState>
                 <VisualState x:Name="VisualStateNormal">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger x:Name="VisualStateNormalTrigger" MinWindowWidth="{StaticResource NormalMinWidth}" />
                     </VisualState.StateTriggers>
-                    <VisualState.Setters />
+                    <VisualState.Setters>
+                        <Setter Target="ArtistImg.Height" Value="250"/>
+                        <Setter Target="ArtistImg.Width" Value="250"/>
+                    </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
@@ -63,7 +70,16 @@
 
             <!-- Title Panel -->
             <StackPanel Grid.Row="0" Orientation="Horizontal"  Margin="19,19,19,0">
-                <Image x:Name="image"  Source="{Binding artist.ImageUrl}" MinWidth="100" MaxWidth="200" Margin="0,0,0,0"/>
+                <Ellipse x:Name="ArtistImg">
+                    <Ellipse.Fill>
+                        <ImageBrush>
+                            <ImageBrush.ImageSource>
+                                <BitmapImage UriSource="{Binding artist.ImageUrl}" />
+                            </ImageBrush.ImageSource>
+                        </ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <!--<Image x:Name="image"  Source="{Binding artist.ImageUrl}" MinWidth="100" MaxWidth="200" Margin="0,0,0,0"/>-->
                 <StackPanel Grid.Row="0" Margin="19,0,19,0">
                     <TextBlock Text="{Binding artist.Name}" Style="{ThemeResource SubheaderTextBlockStyle}" Margin="0,0,0,0"/>
                     <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">
@@ -79,7 +95,11 @@
 
 
             <ScrollViewer  Grid.Row="1" Margin="19,19,19,0" >
-                <ListView ItemTemplate="{StaticResource EventTemplate}" ItemsSource="{Binding eventList}" SelectionMode="None">
+                <ListView ItemTemplate="{StaticResource ArtistEventTemplate}" 
+                          SelectionMode="None"
+                          IsItemClickEnabled="True"
+                          ItemsSource="{Binding eventList}" 
+                          ItemClick="{x:Bind ViewModel.ListView_ItemClick}">
                     <ListView.Header>
                         <TextBlock Margin="8,0,0,0"  Style="{StaticResource HeaderTextBlockStyle}" TextWrapping="NoWrap">Concerts</TextBlock>
                     </ListView.Header>

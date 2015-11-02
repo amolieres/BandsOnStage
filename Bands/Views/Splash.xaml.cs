@@ -24,11 +24,12 @@ namespace Bands.Views
                     MyCanvas.Background = null;
                     MyImage.Visibility = Visibility.Visible;
                 }
+                
                 MyImage.Height = splashScreen.ImageLocation.Height;
                 MyImage.Width = splashScreen.ImageLocation.Width;
                 MyImage.SetValue(Canvas.TopProperty, splashScreen.ImageLocation.Top);
                 MyImage.SetValue(Canvas.LeftProperty, splashScreen.ImageLocation.Left);
-                ProgressTransform.TranslateY = MyImage.Height / 2;
+    ProgressTransform.TranslateY = MyImage.Height / 2;
             };
             Window.Current.SizeChanged += (s, e) => resize();
             resize();

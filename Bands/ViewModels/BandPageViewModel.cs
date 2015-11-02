@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Template10.Mvvm;
 using Template10.Services.NavigationService;
 using Windows.UI.Popups;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace Bands.ViewModels
@@ -85,6 +86,18 @@ namespace Bands.ViewModels
                 MessageDialog msgDialog = new MessageDialog("\"" + _Artist.Name + "\" is not valid , please retry", "404 : Band not found:'(");
                 await msgDialog.ShowAsync();
 
+            }
+
+        }
+
+
+        public void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            BitEvent itemSelected = ((BitEvent)e.ClickedItem);
+
+            if (itemSelected != null)
+            {
+                this.NavigationService.Navigate(typeof(Views.EventPage), itemSelected);
             }
 
         }

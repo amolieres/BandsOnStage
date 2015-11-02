@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Template10.Services.NavigationService;
 using Windows.UI.Popups;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
@@ -56,6 +57,9 @@ namespace Bands.ViewModels
         
         public async void SearchForBand()
         {
+ 
+            Views.Shell.SetBusyVisibility(Visibility.Visible, "Searching");
+
             try
             {
 
@@ -63,7 +67,8 @@ namespace Bands.ViewModels
                 BitArtistsService search = new BitArtistsService();
                 BitArtist artist = await search.GetArtistAsync(this.Value);
 
-                if (artist != null) {
+                if (artist != null)
+                {
                     this.NavigationService.Navigate(typeof(Views.BandPage), artist);
                 }
 
@@ -72,16 +77,21 @@ namespace Bands.ViewModels
             catch (ArgumentException)
             {
                 //Catching bad argument input
-                MessageDialog msgDialog = new MessageDialog("\"" +this.Value + "\" is not valid , please retry", "404 : Band not found:'(");
+                MessageDialog msgDialog = new MessageDialog("\"" + this.Value + "\" is not valid , please retry", "404 : Band not found:'(");
                 await msgDialog.ShowAsync();
             }
 
             catch (Exception)
             {
                 //Catching no service or notfound band
-                MessageDialog msgDialog = new MessageDialog("No bands found for \""+ this.Value + "\" please retry... ", "404 : Band not found :'(");
+                MessageDialog msgDialog = new MessageDialog("No bands found for \"" + this.Value + "\" please retry... ", "404 : Band not found :'(");
                 await msgDialog.ShowAsync();
             }
+            finally {
+
+                Views.Shell.SetBusyVisibility(Visibility.Collapsed);
+            }
+            
 
         }
     }

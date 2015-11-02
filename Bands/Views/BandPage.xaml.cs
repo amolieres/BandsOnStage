@@ -15,6 +15,7 @@ namespace Bands.Views
 
         // strongly-typed view models enable x:bind
         public BandPageViewModel ViewModel => DataContext as BandPageViewModel;
+
     }
 }
 

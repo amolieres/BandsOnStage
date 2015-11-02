@@ -16,7 +16,10 @@ namespace Bands.ViewModels
         public SettingsPartViewModel()
         {
             if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+            {
                 _settings = Services.SettingsServices.SettingsService.Instance;
+                _settings.ApplyAppTheme(ApplicationTheme.Light);
+            }
         }
 
         public bool UseShellBackButton

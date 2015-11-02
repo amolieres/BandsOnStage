@@ -8,14 +8,14 @@
 
         <Canvas x:Name="MyCanvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Canvas.Background>
-                <ImageBrush ImageSource="ms-appx:///Assets/SplashScreen.png" Stretch="Uniform">
+                <ImageBrush ImageSource="ms-appx:///Assets/Splah.png" Stretch="Uniform">
                     <ImageBrush.Transform>
                         <TranslateTransform Y="10" />
                     </ImageBrush.Transform>
                 </ImageBrush>
             </Canvas.Background>
             <Viewbox x:Name="MyImage" Width="{Binding ActualWidth, ElementName=MyCanvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=MyCanvas, Mode=OneWay}">
-                <Image Source="ms-appx:///Assets/SplashScreen.png" />
+                <Image Source="ms-appx:///Assets/Splah.png" />
             </Viewbox>
         </Canvas>
 

@@ -77,11 +77,7 @@ namespace Bands.Models
         /// array of artists performing at the event
         /// </summary>
         [JsonProperty("artists")]
-        public List<BitArtist> Artists
-        {
-            get;
-            set;
-        }
+        public List<BitArtist> Artists { get; set; }
 
         /// <summary>
         /// venue object
@@ -89,9 +85,15 @@ namespace Bands.Models
         [JsonProperty("venue")]
         public BitVenue Venue { get; set; }
 
-
-        //TODO : Add  venue informations
-
+        public string getFirstArtistName()
+        {
+            if (Artists.Count != 0) {
+                if (Artists[0].Name != null) {
+                    return Artists[0].Name;
+                }
+            }
+            return null;
+        }
 
     }
 }

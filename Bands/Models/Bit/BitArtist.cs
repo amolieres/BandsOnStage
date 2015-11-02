@@ -52,5 +52,6 @@ namespace Bands.Models
         [JsonProperty("tracker_count")]
         public int TrackersCount { get; set; }
 
+
     }
 }
