@@ -27,8 +27,8 @@
                         <AdaptiveTrigger x:Name="VisualStateNarrowTrigger" MinWindowWidth="{StaticResource NarrowMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="ArtistImg.Height" Value="150"/>
-                        <Setter Target="ArtistImg.Width" Value="150"/>
+                        <Setter Target="ArtistImg.Height" Value="100"/>
+                        <Setter Target="ArtistImg.Width" Value="100"/>
                     </VisualState.Setters>
                     
                 </VisualState>

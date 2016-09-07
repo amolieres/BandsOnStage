@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="a3a3436d-987d-46e5-b1e2-67eedbbbe83a" Publisher="CN=serel" Version="0.5.0.0" />
+  <Identity Name="31969Serelion.19643569F5ECD" Publisher="CN=3A7AF37E-28E0-4228-B420-D051DEF3A7E7" Version="0.5.0.0" />
   <mp:PhoneIdentity PhoneProductId="a3a3436d-987d-46e5-b1e2-67eedbbbe83a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>BandsOnStage</DisplayName>
-    <PublisherDisplayName>serel</PublisherDisplayName>
+    <PublisherDisplayName>Serelion</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>

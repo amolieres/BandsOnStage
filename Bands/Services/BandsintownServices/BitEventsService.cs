@@ -17,7 +17,7 @@ namespace Bands.Services.BandsintownServices
 
     public class BitEventsService
     {
-        private static string APP_ID = "BANDS_UNIVERSALLWINDOWS10";
+        private static string APP_ID = "BANDS_ON_STAGE_UNIVERSALLWINDOWS10";
         private static string BIT_API_VERSION = "2.0";
 
 
